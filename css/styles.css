@@ -1,0 +1,152 @@
+/* Rise With Us Gaming — Global Styles */
+/* Custom properties layer on top of Tailwind */
+
+:root {
+  --rwug-black:  #0A0A0A;
+  --rwug-gold:   #C9952A;
+  --rwug-gold-light: #E8B84B;
+  --rwug-silver: #A8A9AD;
+  --rwug-silver-light: #D4D5D9;
+  --rwug-dark:   #111111;
+  --rwug-dark-2: #1A1A1A;
+}
+
+/* ── Base ─────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--rwug-black);
+  color: #f0f0f0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Gold gradient text utility ───────────────────── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--rwug-gold) 0%, var(--rwug-gold-light) 50%, var(--rwug-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Silver gradient text utility ─────────────────── */
+.text-silver-gradient {
+  background: linear-gradient(135deg, var(--rwug-silver) 0%, var(--rwug-silver-light) 50%, var(--rwug-silver) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gold border glow ─────────────────────────────── */
+.border-gold-glow {
+  border: 1px solid var(--rwug-gold);
+  box-shadow: 0 0 12px rgba(201, 149, 42, 0.4), inset 0 0 12px rgba(201, 149, 42, 0.05);
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, var(--rwug-gold), var(--rwug-gold-light));
+  color: #0A0A0A;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--rwug-gold);
+  color: var(--rwug-gold);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.btn-outline:hover {
+  background: var(--rwug-gold);
+  color: #0A0A0A;
+  transform: translateY(-2px);
+}
+
+/* ── Section divider ──────────────────────────────── */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rwug-gold), var(--rwug-gold-light));
+  margin: 0 auto 1.5rem;
+}
+
+/* ── Angled section clip ──────────────────────────── */
+.clip-angled {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+.clip-angled-top {
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ── Card base ────────────────────────────────────── */
+.card-dark {
+  background: var(--rwug-dark-2);
+  border: 1px solid rgba(201, 149, 42, 0.15);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-dark:hover {
+  border-color: var(--rwug-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(201, 149, 42, 0.2);
+}
+
+/* ── Navigation ───────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rwug-silver);
+  transition: color 0.2s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--rwug-gold);
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: var(--rwug-gold); }
+.nav-link:hover::after { width: 100%; }
+
+/* ── Hero ─────────────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.7) 0%,
+    rgba(10, 10, 10, 0.4) 40%,
+    rgba(10, 10, 10, 0.9) 90%,
+    rgba(10, 10, 10, 1) 100%
+  );
+}
+
+/* ── Scrollbar ────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--rwug-dark); }
+::-webkit-scrollbar-thumb { background: var(--rwug-gold); border-radius: 3px; }
+
+/* ── GSAP initial states (prevent flash) ─────────── */
+.gsap-fade-up  { opacity: 0; transform: translateY(40px); }
+.gsap-fade-in  { opacity: 0; }
+.gsap-scale-in { opacity: 0; transform: scale(0.92); }
