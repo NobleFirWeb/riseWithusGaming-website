@@ -150,3 +150,123 @@ body {
 .gsap-fade-up  { opacity: 0; transform: translateY(40px); }
 .gsap-fade-in  { opacity: 0; }
 .gsap-scale-in { opacity: 0; transform: scale(0.92); }
+
+/* ── Nav logo ─────────────────────────────────────── */
+.nav-logo {
+  filter: none;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.35s ease;
+  will-change: filter, transform;
+}
+
+/* Hover only: scale up + gold glow fires */
+a:hover .nav-logo,
+a:focus .nav-logo {
+  transform: scale(1.12) rotate(-3deg);
+  filter:
+    drop-shadow(0 0 10px rgba(201, 149, 42, 0.9))
+    drop-shadow(0 0 28px rgba(201, 149, 42, 0.45))
+    drop-shadow(0 0 50px rgba(201, 149, 42, 0.2));
+}
+
+/* ── Infinite marquee ticker ──────────────────────── */
+.marquee-section {
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 18s linear infinite;
+  /* Pause on hover so user can read it */
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* -50% scrolls exactly one set */
+}
+
+.marquee-set {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0.6rem 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.marquee-word {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: clamp(4rem, 10vw, 9.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  padding: 0 0.4em;
+}
+
+/* Gold outline variant for alternating words */
+.marquee-outline {
+  -webkit-text-stroke: 2px var(--rwug-gold);
+  color: transparent;
+  opacity: 0.7;
+}
+
+/* The ✦ separator */
+.marquee-dot {
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  color: var(--rwug-gold);
+  opacity: 0.5;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* ── Merch slider — responsive widths ────────────── */
+/*   Desktop default: 80% (set inline on the elements) */
+
+@media (max-width: 640px) {
+  /* Expand slider to near full width, reduce section top padding */
+  #merch-viewport,
+  #merch-slider-header {
+    width: 94% !important;
+  }
+
+  /* Tighten section top padding so the coming-soon copy
+     and email form don't leave a huge gap above the slider */
+  section.pt-20 {
+    padding-top: 2.5rem !important;
+  }
+
+  /* Keep the header row from wrapping — shrink heading font slightly */
+  #merch-slider-header h3 {
+    font-size: 1.1rem;
+    white-space: nowrap;
+  }
+
+  /* Reduce bottom padding on merch track so section doesn't
+     feel cavernous on small screens */
+  #merch-track {
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #merch-viewport,
+  #merch-slider-header {
+    width: 92% !important;
+  }
+
+  #merch-slider-header h3 {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Arrow buttons: slightly smaller on very small screens */
+  #merch-prev,
+  #merch-next {
+    width: 2rem;
+    height: 2rem;
+  }
+}
