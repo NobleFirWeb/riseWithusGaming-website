@@ -394,45 +394,111 @@
         </div>
       </div>
 
-      <!-- Latest video thumbnails -->
-      <div class="gsap-stagger-group grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-        <div class="gsap-stagger-item card-dark group cursor-pointer">
-          <div class="aspect-video bg-rwug-card relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center text-silver/20">
-              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <!-- Latest video thumbnails — draggable slider -->
+      <div class="relative flex items-center mt-10 gap-4">
+
+        <!-- Left arrow -->
+        <button
+          id="video-prev"
+          aria-label="Previous videos"
+          class="flex-shrink-0 w-10 h-10 flex items-center justify-center border border-gold/40 text-silver hover:text-gold hover:border-gold transition-all duration-200"
+          style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+
+        <!-- Viewport -->
+        <div id="video-viewport" class="overflow-hidden cursor-grab active:cursor-grabbing select-none flex-1">
+          <div id="video-track" class="flex" style="width: max-content; gap: 1.5rem;">
+
+            <!-- Card 1 -->
+            <div class="video-card flex-shrink-0 card-dark group cursor-pointer">
+              <div class="aspect-video bg-rwug-card relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center text-silver/20">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-3">
+                <p class="text-white text-sm font-600 leading-tight">Latest Match Highlights</p>
+                <p class="text-silver/60 text-xs mt-1">YouTube · Coming Soon</p>
+              </div>
             </div>
-            <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </div>
-          <div class="p-3">
-            <p class="text-white text-sm font-600 leading-tight">Latest Match Highlights — Coming Soon</p>
-            <p class="text-silver/60 text-xs mt-1">YouTube</p>
-          </div>
-        </div>
-        <div class="gsap-stagger-item card-dark group cursor-pointer">
-          <div class="aspect-video bg-rwug-card relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center text-silver/20">
-              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+
+            <!-- Card 2 -->
+            <div class="video-card flex-shrink-0 card-dark group cursor-pointer">
+              <div class="aspect-video bg-rwug-card relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center text-silver/20">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-3">
+                <p class="text-white text-sm font-600 leading-tight">Stream Clip of the Week</p>
+                <p class="text-silver/60 text-xs mt-1">Twitch · Coming Soon</p>
+              </div>
             </div>
-            <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </div>
-          <div class="p-3">
-            <p class="text-white text-sm font-600 leading-tight">Stream Clip — Coming Soon</p>
-            <p class="text-silver/60 text-xs mt-1">Twitch</p>
-          </div>
-        </div>
-        <div class="gsap-stagger-item card-dark group cursor-pointer">
-          <div class="aspect-video bg-rwug-card relative overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center text-silver/20">
-              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+
+            <!-- Card 3 -->
+            <div class="video-card flex-shrink-0 card-dark group cursor-pointer">
+              <div class="aspect-video bg-rwug-card relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center text-silver/20">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-3">
+                <p class="text-white text-sm font-600 leading-tight">Behind the Game</p>
+                <p class="text-silver/60 text-xs mt-1">YouTube · Coming Soon</p>
+              </div>
             </div>
-            <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </div>
-          <div class="p-3">
-            <p class="text-white text-sm font-600 leading-tight">Behind the Game — Coming Soon</p>
-            <p class="text-silver/60 text-xs mt-1">YouTube</p>
-          </div>
-        </div>
-      </div>
+
+            <!-- Card 4 -->
+            <div class="video-card flex-shrink-0 card-dark group cursor-pointer">
+              <div class="aspect-video bg-rwug-card relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center text-silver/20">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-3">
+                <p class="text-white text-sm font-600 leading-tight">Top Plays This Month</p>
+                <p class="text-silver/60 text-xs mt-1">YouTube · Coming Soon</p>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="video-card flex-shrink-0 card-dark group cursor-pointer">
+              <div class="aspect-video bg-rwug-card relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center text-silver/20">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              <div class="p-3">
+                <p class="text-white text-sm font-600 leading-tight">Squad Stream Recap</p>
+                <p class="text-silver/60 text-xs mt-1">Twitch · Coming Soon</p>
+              </div>
+            </div>
+
+          </div><!-- /video-track -->
+        </div><!-- /video-viewport -->
+
+        <!-- Right arrow -->
+        <button
+          id="video-next"
+          aria-label="Next videos"
+          class="flex-shrink-0 w-10 h-10 flex items-center justify-center border border-gold/40 text-silver hover:text-gold hover:border-gold transition-all duration-200"
+          style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+      </div><!-- /slider row -->
     </div>
   </section>
 
