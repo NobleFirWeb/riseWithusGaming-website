@@ -227,7 +227,30 @@ a:focus .nav-logo {
 /*   Desktop default: 80% (set inline on the elements) */
 
 @media (max-width: 640px) {
-  /* Expand slider to near full width, reduce section top padding */
+
+  /* ── Video slider: stack viewport above, arrows below ── */
+  #video-slider-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  #video-viewport {
+    order: 1;
+    flex: 0 0 100%;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  #video-prev {
+    order: 2;
+    flex-shrink: 0;
+  }
+  #video-next {
+    order: 2;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  /* ── Merch slider: expand to near full width ── */
   #merch-viewport,
   #merch-slider-header {
     width: 94% !important;
