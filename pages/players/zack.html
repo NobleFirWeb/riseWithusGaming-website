@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zack — Rise With Us Gaming</title>
+  <meta name="description" content="Zack Alvarez (itsquack420) — Champion-ranked Madden, Forza & Fortnite streamer. Burley, Idaho | Age 27 | Twitch & TikTok." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../../images/logos/nav-logo3.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold:   { DEFAULT: '#C9952A', light: '#E8B84B' },
+            silver: { DEFAULT: '#A8A9AD', light: '#D4D5D9' },
+            rwug:   { dark: '#111111', darker: '#0A0A0A', card: '#1A1A1A' },
+          },
+          fontFamily: {
+            sans:    ['Inter', 'sans-serif'],
+            display: ['Rajdhani', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/styles.css" />
+
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="bg-rwug-darker text-white font-sans overflow-x-hidden">
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════════ -->
+  <nav
+    id="navbar"
+    x-data="{ open: false }"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    style="background: rgba(10,10,10,0.0); backdrop-filter: blur(0px);"
+    :style="open ? 'background: rgba(10,10,10,0.98);' : ''"
+    x-init="
+      window.addEventListener('scroll', () => {
+        $el.style.background = window.scrollY > 60 ? 'rgba(10,10,10,0.95)' : 'rgba(10,10,10,0)';
+        $el.style.backdropFilter = window.scrollY > 60 ? 'blur(12px)' : 'blur(0px)';
+        $el.style.borderBottom = window.scrollY > 60 ? '1px solid rgba(201,149,42,0.2)' : 'none';
+      })
+    "
+  >
+    <div class="max-w-9xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../../index.html" class="flex items-center gap-3 flex-shrink-0">
+        <img src="../../images/logos/nav-logo3.png" alt="Rise With Us Gaming" class="nav-logo h-12 w-auto" />
+        <span class="font-display font-700 text-lg tracking-widest text-silver hidden sm:block">RISE WITH US</span>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="../../index.html" class="nav-link">Home</a></li>
+        <li><a href="../team.html" class="nav-link text-gold">Team</a></li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="#" class="nav-link opacity-40 cursor-not-allowed">Store <span class="text-gold text-[9px] align-top ml-0.5">SOON</span></a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="https://www.twitch.tv/alvarez42200" target="_blank" rel="noopener" aria-label="Twitch" class="text-silver hover:text-gold transition-colors duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+        <a href="https://www.tiktok.com/@zackalvarez1998" target="_blank" rel="noopener" aria-label="TikTok" class="text-silver hover:text-gold transition-colors duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+        <a href="../contact.html" class="btn-primary text-xs ml-2">Join Us</a>
+      </div>
+
+      <button @click="open = !open" class="lg:hidden text-silver hover:text-gold transition-colors p-2" aria-label="Toggle menu">
+        <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div x-show="open"
+      x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
+      class="lg:hidden border-t border-gold/20 bg-rwug-darker px-6 pb-6">
+      <ul class="flex flex-col gap-4 pt-4">
+        <li><a href="../../index.html" class="nav-link block py-1">Home</a></li>
+        <li><a href="../team.html" class="nav-link block py-1 text-gold">Team</a></li>
+        <li><a href="../about.html" class="nav-link block py-1">About</a></li>
+        <li><span class="nav-link block py-1 opacity-40">Store (Coming Soon)</span></li>
+        <li><a href="../contact.html" class="nav-link block py-1">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-end overflow-hidden">
+
+    <div class="absolute inset-0">
+      <img
+        src="../../images/team/Zack/zack2.png"
+        alt="Zack Alvarez"
+        class="w-full h-full object-cover"
+        style="object-position: center 20%;"
+      />
+      <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.5) 55%, rgba(10,10,10,0.15) 100%);"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.75) 30%, transparent 65%);"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(ellipse 50% 70% at 15% 60%, rgba(201,149,42,0.07) 0%, transparent 60%);"></div>
+    </div>
+
+    <!-- Back to roster -->
+    <div class="absolute top-28 left-6 z-20">
+      <a href="../team.html" class="flex items-center gap-2 text-silver/70 hover:text-gold transition-colors duration-200 text-xs tracking-widest uppercase font-600 group">
+        <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        Back to Roster
+      </a>
+    </div>
+
+    <!-- Player info -->
+    <div class="relative z-10 max-w-9xl mx-auto px-6 pb-16 w-full">
+      <div class="max-w-2xl gsap-fade-up">
+
+        <!-- Badges -->
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="bg-gold/90 text-black text-[9px] tracking-widest uppercase font-700 px-3 py-1" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">Champion Ranked</span>
+          <span class="border border-gold/40 text-gold text-[9px] tracking-widest uppercase font-600 px-3 py-1" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">Madden · Forza · Fortnite</span>
+          <span class="border border-silver/20 text-silver text-[9px] tracking-widest uppercase font-600 px-3 py-1" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">PlayStation 5</span>
+        </div>
+
+        <!-- Name -->
+        <h1 class="font-display font-700 text-7xl md:text-9xl uppercase leading-none tracking-wider mb-2">
+          <span class="text-white">Z</span><span class="text-gold-gradient">A</span><span class="text-white">CK</span>
+        </h1>
+        <p class="text-silver/70 text-sm tracking-[0.25em] uppercase mb-1">Zack Alvarez</p>
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-6">itsquack420</p>
+
+        <!-- Quick stats bar -->
+        <div class="flex flex-wrap gap-6 mb-8 pb-8 border-b border-white/10">
+          <div>
+            <p class="text-gold text-[9px] tracking-widest uppercase font-600 mb-1">Age</p>
+            <p class="text-white font-600 text-sm">27</p>
+          </div>
+          <div>
+            <p class="text-gold text-[9px] tracking-widest uppercase font-600 mb-1">Location</p>
+            <p class="text-white font-600 text-sm">Burley, Idaho</p>
+          </div>
+          <div>
+            <p class="text-gold text-[9px] tracking-widest uppercase font-600 mb-1">Platform</p>
+            <p class="text-white font-600 text-sm">PlayStation 5</p>
+          </div>
+          <div>
+            <p class="text-gold text-[9px] tracking-widest uppercase font-600 mb-1">Streaming Since</p>
+            <p class="text-white font-600 text-sm">December 2025</p>
+          </div>
+        </div>
+
+        <!-- Social CTAs -->
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="https://www.twitch.tv/alvarez42200"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center gap-2 px-5 py-2.5 border border-gold/40 text-silver hover:text-gold hover:border-gold transition-all duration-200 text-xs tracking-widest uppercase font-600"
+            style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+            Watch on Twitch
+          </a>
+          <a
+            href="https://www.tiktok.com/@zackalvarez1998"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center gap-2 px-5 py-2.5 border border-gold/40 text-silver hover:text-gold hover:border-gold transition-all duration-200 text-xs tracking-widest uppercase font-600"
+            style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+            Follow on TikTok
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT
+  ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-6 bg-rwug-darker">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Photo -->
+      <div class="gsap-fade-up relative">
+        <div class="relative overflow-hidden" style="aspect-ratio: 4/5;">
+          <img
+            src="../../images/team/Zack/zack3.png"
+            alt="Zack Alvarez"
+            class="w-full h-full object-cover object-center"
+          />
+          <div class="absolute inset-0 border border-gold/20"></div>
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold via-gold/60 to-transparent"></div>
+        </div>
+        <!-- Floating tag -->
+        <div class="absolute -bottom-6 -right-6 bg-rwug-card border border-gold/30 p-5 hidden md:block">
+          <p class="font-display font-700 text-2xl text-gold-gradient leading-none">itsquack420</p>
+          <p class="text-silver text-xs tracking-widest uppercase mt-1">Official Gamer Tag</p>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="gsap-fade-up">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3">About Zack</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-6 leading-tight">
+          Gaming Is<br/><span class="text-gold-gradient">Community</span>
+        </h2>
+        <div class="w-12 h-0.5 bg-gold mb-8"></div>
+
+        <p class="text-silver leading-relaxed mb-5 text-base">
+          Zack Alvarez is a champion-ranked gamer and content creator from Burley, Idaho, competing on PS5 across Madden, Forza, and Fortnite. He started streaming in December 2025 and quickly discovered what makes it real — the people.
+        </p>
+
+        <!-- Pull quote -->
+        <div class="border-l-2 border-gold pl-6 mb-5 py-1">
+          <p class="text-white leading-relaxed italic text-base">
+            "I quickly fell in love with the community, friendly competition, and the connections gaming creates."
+          </p>
+          <p class="text-gold/60 text-xs tracking-widest uppercase mt-3 font-600">— Zack Alvarez</p>
+        </div>
+
+        <p class="text-silver leading-relaxed text-base">
+          For Zack, streaming is more than entertainment — it keeps his mental health positive while doing what he loves most: gaming, meeting new people, and having fun with the squad. That's the energy he brings to Rise With Us Gaming every time he goes live.
+        </p>
+
+        <div class="flex gap-4 mt-8">
+          <a href="https://www.twitch.tv/alvarez42200" target="_blank" rel="noopener" class="btn-primary text-xs">Watch Live</a>
+          <a href="https://www.tiktok.com/@zackalvarez1998" target="_blank" rel="noopener" class="btn-outline text-xs">Follow on TikTok</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       STATS BAR
+  ══════════════════════════════════════════════════ -->
+  <section class="py-16 px-6 bg-rwug-dark border-y border-gold/10">
+    <div class="max-w-5xl mx-auto">
+      <div class="gsap-stagger-group grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="gsap-stagger-item">
+          <p class="font-display font-700 text-4xl text-gold-gradient mb-2">Champion</p>
+          <p class="text-silver text-xs tracking-widest uppercase">Competitive Rank</p>
+        </div>
+        <div class="gsap-stagger-item">
+          <p class="font-display font-700 text-4xl text-gold-gradient mb-2">3</p>
+          <p class="text-silver text-xs tracking-widest uppercase">Games Streamed</p>
+        </div>
+        <div class="gsap-stagger-item">
+          <p class="font-display font-700 text-4xl text-gold-gradient mb-2">PS5</p>
+          <p class="text-silver text-xs tracking-widest uppercase">Platform</p>
+        </div>
+        <div class="gsap-stagger-item">
+          <p class="font-display font-700 text-4xl text-gold-gradient mb-2">Dec '25</p>
+          <p class="text-silver text-xs tracking-widest uppercase">Streaming Since</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       GAMES
+  ══════════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-rwug-darker">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12 gsap-fade-up">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3">What He Plays</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-4">The Titles</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="gsap-stagger-group grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+        <div class="gsap-stagger-item card-dark p-8 text-center group">
+          <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-4 group-hover:border-gold transition-colors duration-300" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+            <!-- Football icon -->
+            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wide text-white group-hover:text-gold transition-colors mb-2">Madden NFL 26</h3>
+          <p class="text-silver text-xs leading-relaxed">Champion-ranked competitive play and content creation with Rise With Us Gaming.</p>
+        </div>
+
+        <div class="gsap-stagger-item card-dark p-8 text-center group">
+          <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-4 group-hover:border-gold transition-colors duration-300" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+            <!-- Racing icon -->
+            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wide text-white group-hover:text-gold transition-colors mb-2">Forza</h3>
+          <p class="text-silver text-xs leading-relaxed">High-speed racing content bringing a different energy to the stream rotation.</p>
+        </div>
+
+        <div class="gsap-stagger-item card-dark p-8 text-center group">
+          <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-4 group-hover:border-gold transition-colors duration-300" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+            <!-- Shield/battle icon -->
+            <svg class="w-6 h-6 text-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          </div>
+          <h3 class="font-display font-700 text-xl uppercase tracking-wide text-white group-hover:text-gold transition-colors mb-2">Fortnite</h3>
+          <p class="text-silver text-xs leading-relaxed">Battle royale competition and squad play — keeping the stream fun and competitive.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FIND ME LIVE
+  ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-6 bg-rwug-dark clip-angled-top">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="text-center mb-12 gsap-fade-up">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3">Watch Zack</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-4">Find Me Live</h2>
+        <div class="section-divider"></div>
+        <p class="text-silver text-sm mt-4 max-w-md mx-auto">Catch Zack live on Twitch and TikTok — follow both so you never miss a stream.</p>
+      </div>
+
+      <div class="gsap-stagger-group grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Twitch -->
+        <a
+          href="https://www.twitch.tv/alvarez42200"
+          target="_blank"
+          rel="noopener"
+          class="gsap-stagger-item card-dark group relative overflow-hidden p-8 flex flex-col items-start gap-4"
+        >
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#9146FF] to-[#9146FF]/20"></div>
+          <div class="flex items-center gap-4 w-full">
+            <div class="w-12 h-12 flex items-center justify-center border border-[#9146FF]/30 bg-[#9146FF]/10 group-hover:border-[#9146FF] transition-colors" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+              <svg class="w-6 h-6 text-[#9146FF]" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-700 text-lg font-display uppercase tracking-wide">Twitch</p>
+              <p class="text-silver/60 text-xs">twitch.tv/alvarez42200</p>
+            </div>
+            <svg class="w-4 h-4 text-silver/30 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+          <p class="text-silver text-sm leading-relaxed">
+            Madden, Forza, and Fortnite — Zack's live Twitch streams keep it competitive, fun, and community-first.
+          </p>
+          <span class="text-[#9146FF] text-xs tracking-widest uppercase font-600 group-hover:underline">Watch Now →</span>
+        </a>
+
+        <!-- TikTok -->
+        <a
+          href="https://www.tiktok.com/@zackalvarez1998"
+          target="_blank"
+          rel="noopener"
+          class="gsap-stagger-item card-dark group relative overflow-hidden p-8 flex flex-col items-start gap-4"
+        >
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-white to-white/20"></div>
+          <div class="flex items-center gap-4 w-full">
+            <div class="w-12 h-12 flex items-center justify-center border border-white/20 bg-white/5 group-hover:border-white/50 transition-colors" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+            </div>
+            <div>
+              <p class="text-white font-700 text-lg font-display uppercase tracking-wide">TikTok</p>
+              <p class="text-silver/60 text-xs">@zackalvarez1998</p>
+            </div>
+            <svg class="w-4 h-4 text-silver/30 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </div>
+          <p class="text-silver text-sm leading-relaxed">
+            Clips, highlights, and gaming moments from @zackalvarez1998 — follow for the best plays on the go.
+          </p>
+          <span class="text-white text-xs tracking-widest uppercase font-600 group-hover:underline">Follow Now →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       REST OF THE ROSTER
+  ══════════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-rwug-darker">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 gsap-fade-up">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3">Rise With Us</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-4">The Full Roster</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="gsap-stagger-group grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+        <!-- DTB -->
+        <a href="dtb.html" class="gsap-stagger-item card-dark group relative overflow-hidden block">
+          <div class="aspect-[3/4] bg-rwug-card relative overflow-hidden">
+            <img src="../../images/team/DTB/dtb1.png" alt="DTB" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute top-3 left-3 bg-gold/90 px-2 py-0.5" style="clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);">
+              <span class="text-black text-[9px] tracking-widest uppercase font-700">CEO</span>
+            </div>
+          </div>
+          <div class="p-4 border-t border-gold/20">
+            <p class="text-gold text-[10px] tracking-widest uppercase font-600 mb-1">Founder · CEO</p>
+            <h3 class="font-display font-700 text-2xl uppercase tracking-wide text-white group-hover:text-gold transition-colors">DTB</h3>
+            <p class="text-silver text-xs mt-0.5">Twitch · TikTok</p>
+          </div>
+        </a>
+
+        <!-- Dan -->
+        <a href="dan.html" class="gsap-stagger-item card-dark group relative overflow-hidden block">
+          <div class="aspect-[3/4] bg-rwug-card relative overflow-hidden">
+            <div class="absolute inset-0 flex flex-col items-center justify-center" style="background: linear-gradient(145deg, #1a1a1a, #111);">
+              <div class="w-16 h-16 rounded-full border-2 border-gold/20 flex items-center justify-center mb-2">
+                <svg class="w-8 h-8 text-silver/20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-4 border-t border-gold/20">
+            <p class="text-gold text-[10px] tracking-widest uppercase font-600 mb-1">Madden Streamer</p>
+            <h3 class="font-display font-700 text-2xl uppercase tracking-wide text-white group-hover:text-gold transition-colors">Dan</h3>
+            <p class="text-silver text-xs mt-0.5">Twitch · TikTok</p>
+          </div>
+        </a>
+
+        <!-- Kane -->
+        <a href="kane.html" class="gsap-stagger-item card-dark group relative overflow-hidden block">
+          <div class="aspect-[3/4] bg-rwug-card relative overflow-hidden">
+            <div class="absolute inset-0 flex flex-col items-center justify-center" style="background: linear-gradient(145deg, #1a1a1a, #111);">
+              <div class="w-16 h-16 rounded-full border-2 border-gold/20 flex items-center justify-center mb-2">
+                <svg class="w-8 h-8 text-silver/20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <div class="p-4 border-t border-gold/20">
+            <p class="text-gold text-[10px] tracking-widest uppercase font-600 mb-1">Madden Streamer</p>
+            <h3 class="font-display font-700 text-2xl uppercase tracking-wide text-white group-hover:text-gold transition-colors">Kane</h3>
+            <p class="text-silver text-xs mt-0.5">Twitch · TikTok</p>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="text-center mt-10 gsap-fade-up">
+        <a href="../team.html" class="btn-outline">View Full Roster</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <footer class="bg-[#080808] border-t border-gold/20 px-16 pt-16 pb-8">
+    <div class="max-w-9xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <img src="../../images/logos/nav-logo3.png" alt="Rise With Us Gaming" class="h-16 mb-4" />
+          <p class="text-silver text-sm leading-relaxed max-w-xs">
+            Elite Madden streaming. Competitive gaming. Community first. Rise With Us Gaming — where legends are made.
+          </p>
+          <div class="flex gap-5 mt-6">
+            <a href="https://www.twitch.tv/alvarez42200" target="_blank" rel="noopener" aria-label="Twitch" class="text-silver hover:text-gold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+            <a href="https://www.tiktok.com/@zackalvarez1998" target="_blank" rel="noopener" aria-label="TikTok" class="text-silver hover:text-gold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-display font-700 text-sm tracking-widest uppercase text-gold mb-4">Navigate</h4>
+          <ul class="space-y-2">
+            <li><a href="../../index.html" class="text-silver text-sm hover:text-gold transition-colors">Home</a></li>
+            <li><a href="../team.html" class="text-silver text-sm hover:text-gold transition-colors">Team</a></li>
+            <li><a href="../about.html" class="text-silver text-sm hover:text-gold transition-colors">About</a></li>
+            <li><span class="text-silver/40 text-sm">Store (Coming Soon)</span></li>
+            <li><a href="../contact.html" class="text-silver text-sm hover:text-gold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display font-700 text-sm tracking-widest uppercase text-gold mb-4">Roster</h4>
+          <ul class="space-y-2">
+            <li><a href="dtb.html" class="text-silver text-sm hover:text-gold transition-colors">DTB</a></li>
+            <li><a href="zack.html" class="text-gold text-sm font-600">Zack</a></li>
+            <li><a href="dan.html" class="text-silver text-sm hover:text-gold transition-colors">Dan</a></li>
+            <li><a href="kane.html" class="text-silver text-sm hover:text-gold transition-colors">Kane</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gold/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-silver/40 text-xs tracking-wider">&copy; 2026 Rise With Us Gaming. All rights reserved.</p>
+        <p class="text-silver/30 text-xs">Built by <a href="https://noblefirstudio.com" class="hover:text-gold transition-colors">Noble Fir Studio</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo('.gsap-fade-up',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.15, delay: 0.4 }
+    );
+
+    gsap.utils.toArray('.gsap-fade-up').forEach(el => {
+      if (el.getBoundingClientRect().top > window.innerHeight) {
+        gsap.fromTo(el, { opacity: 0, y: 40 }, {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        });
+      }
+    });
+
+    gsap.utils.toArray('.gsap-stagger-group').forEach(group => {
+      gsap.fromTo(group.querySelectorAll('.gsap-stagger-item'),
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.12,
+          scrollTrigger: { trigger: group, start: 'top 85%' } }
+      );
+    });
+  </script>
+</body>
+</html>

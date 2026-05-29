@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Rise With Us Gaming</title>
+  <meta name="description" content="Learn who we are, what we stand for, and where we're going. Rise With Us Gaming — One Team. One Rise." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../images/logos/nav-logo3.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold:   { DEFAULT: '#C9952A', light: '#E8B84B' },
+            silver: { DEFAULT: '#A8A9AD', light: '#D4D5D9' },
+            rwug:   { dark: '#111111', darker: '#0A0A0A', card: '#1A1A1A' },
+          },
+          fontFamily: {
+            sans:    ['Inter', 'sans-serif'],
+            display: ['Rajdhani', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="bg-rwug-darker text-white font-sans overflow-x-hidden">
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════════ -->
+  <nav
+    id="navbar"
+    x-data="{ open: false }"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    style="background: rgba(10,10,10,0.0); backdrop-filter: blur(0px);"
+    :style="open ? 'background: rgba(10,10,10,0.98);' : ''"
+    x-init="
+      window.addEventListener('scroll', () => {
+        $el.style.background = window.scrollY > 60 ? 'rgba(10,10,10,0.95)' : 'rgba(10,10,10,0)';
+        $el.style.backdropFilter = window.scrollY > 60 ? 'blur(12px)' : 'blur(0px)';
+        $el.style.borderBottom = window.scrollY > 60 ? '1px solid rgba(201,149,42,0.2)' : 'none';
+      })
+    "
+  >
+    <div class="max-w-9xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-3 flex-shrink-0">
+        <img src="../images/logos/nav-logo3.png" alt="Rise With Us Gaming" class="nav-logo h-12 w-auto" />
+        <span class="font-display font-700 text-lg tracking-widest text-silver hidden sm:block">RISE WITH US</span>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-8">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="team.html" class="nav-link">Team</a></li>
+        <li><a href="about.html" class="nav-link text-gold">About</a></li>
+        <li><a href="#" class="nav-link opacity-40 cursor-not-allowed">Store <span class="text-gold text-[9px] align-top ml-0.5">SOON</span></a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="#" aria-label="Twitch" class="text-silver hover:text-gold transition-colors duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+        <a href="#" aria-label="YouTube" class="text-silver hover:text-gold transition-colors duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="#" aria-label="Twitter/X" class="text-silver hover:text-gold transition-colors duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="contact.html" class="btn-primary text-xs ml-2">Join Us</a>
+      </div>
+
+      <button @click="open = !open" class="lg:hidden text-silver hover:text-gold transition-colors p-2" aria-label="Toggle menu">
+        <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div x-show="open"
+      x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
+      class="lg:hidden border-t border-gold/20 bg-rwug-darker px-6 pb-6">
+      <ul class="flex flex-col gap-4 pt-4">
+        <li><a href="../index.html" class="nav-link block py-1">Home</a></li>
+        <li><a href="team.html" class="nav-link block py-1">Team</a></li>
+        <li><a href="about.html" class="nav-link block py-1 text-gold">About</a></li>
+        <li><span class="nav-link block py-1 opacity-40">Store (Coming Soon)</span></li>
+        <li><a href="contact.html" class="nav-link block py-1">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE HERO
+  ══════════════════════════════════════════════════ -->
+  <section class="relative pt-40 pb-24 px-6 overflow-hidden" style="background: linear-gradient(160deg, #0a0a0a 0%, #111111 60%, #0d0d0d 100%);">
+    <!-- Grid texture -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(201,149,42,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,149,42,1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <!-- Gold radial glow -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 50% 40% at 50% 60%, rgba(201,149,42,0.07) 0%, transparent 70%);"></div>
+    <!-- Bottom fade -->
+    <div class="absolute bottom-0 left-0 right-0 h-32" style="background: linear-gradient(to bottom, transparent, #0a0a0a);"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <p class="gsap-fade-up text-gold text-xs tracking-[0.35em] uppercase font-600 mb-4">Who We Are</p>
+      <h1 class="gsap-fade-up font-display font-700 text-6xl md:text-8xl uppercase tracking-wider text-white leading-none mb-6">
+        About <span class="text-gold-gradient">Rise</span>
+      </h1>
+      <div class="gsap-fade-up section-divider"></div>
+      <p class="gsap-fade-up text-silver text-lg max-w-2xl mx-auto mt-6 leading-relaxed">
+        A professional digital content collective and competitive streaming organization — built on innovation, community, and relentless pursuit of excellence.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       CORPORATE IDENTITY
+  ══════════════════════════════════════════════════ -->
+  <section class="py-20 px-6 bg-rwug-darker">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Text -->
+        <div class="gsap-fade-up">
+          <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3">Our Identity</p>
+          <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-6 leading-tight">
+            What We Are
+          </h2>
+          <div class="w-12 h-0.5 bg-gold mb-6"></div>
+          <p class="text-silver leading-relaxed mb-4">
+            Rise With Us Gaming is established as a professional digital content collective and competitive streaming organization. We operate as a unified network of independent content creators, digital broadcasters, and elite-level esports competitors.
+          </p>
+          <p class="text-silver leading-relaxed">
+            Our organization is built upon the principles of broadcast innovation, market-leading audience engagement, and high-tier competitive execution.
+          </p>
+        </div>
+
+        <!-- Stat blocks -->
+        <div class="gsap-fade-up grid grid-cols-2 gap-4">
+          <div class="card-dark p-6 text-center">
+            <p class="font-display font-700 text-5xl text-gold-gradient mb-2">4+</p>
+            <p class="text-silver text-xs tracking-widest uppercase">Elite Streamers</p>
+          </div>
+          <div class="card-dark p-6 text-center">
+            <p class="font-display font-700 text-5xl text-gold-gradient mb-2">2</p>
+            <p class="text-silver text-xs tracking-widest uppercase">Platforms</p>
+          </div>
+          <div class="card-dark p-6 text-center">
+            <p class="font-display font-700 text-5xl text-gold-gradient mb-2">1</p>
+            <p class="text-silver text-xs tracking-widest uppercase">Team</p>
+          </div>
+          <div class="card-dark p-6 text-center">
+            <p class="font-display font-700 text-5xl text-gold-gradient mb-2">∞</p>
+            <p class="text-silver text-xs tracking-widest uppercase">The Rise</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       MISSION STATEMENT BANNER
+  ══════════════════════════════════════════════════ -->
+  <section class="relative py-24 px-6 overflow-hidden" style="background: linear-gradient(135deg, #0d0d0d 0%, #111111 100%);">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+    <!-- Background R watermark -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+      <span class="font-display font-700 text-[30vw] leading-none text-white opacity-[0.02] uppercase">R</span>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center gsap-fade-up">
+      <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-6">Our Mission</p>
+      <blockquote class="font-display font-700 text-2xl md:text-4xl uppercase leading-tight tracking-wide text-white mb-8">
+        "To engineer a premier digital entertainment brand that bridges the gap between
+        <span class="text-gold-gradient"> elite competitive gameplay</span>
+        and professional media production."
+      </blockquote>
+      <p class="text-silver text-base max-w-3xl mx-auto leading-relaxed">
+        We are dedicated to providing high-value content to our audience while creating sustainable, scalable growth opportunities for our roster of creators. Through technical excellence and strategic brand development, we aim to set the benchmark for modern streaming collectives.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       STRATEGIC PILLARS
+  ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-6 bg-rwug-darker clip-angled-top">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16 gsap-fade-up">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3"> Strategic Pillars</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-4">Core Objectives</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="gsap-stagger-group grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Pillar 1 -->
+        <div class="gsap-stagger-item card-dark p-8 relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold to-gold/20"></div>
+          <div class="mb-4">
+            <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-4 group-hover:border-gold transition-colors duration-300" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+              <!-- Broadcast icon -->
+              <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/></svg>
+            </div>
+            <h3 class="font-display font-700 text-2xl uppercase tracking-wider text-white mb-3 group-hover:text-gold transition-colors duration-300">Broadcast & Technical Excellence</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              We hold our network to rigorous production standards. Utilizing advanced streaming infrastructure, high-fidelity audio/video routing, and platform-optimized media, we deliver a premium, seamless viewing experience across all major streaming and digital distribution platforms.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="gsap-stagger-item card-dark p-8 relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold to-gold/20"></div>
+          <div class="mb-4">
+            <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-4 group-hover:border-gold transition-colors duration-300" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+              <!-- Community icon -->
+              <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+            </div>
+            <h3 class="font-display font-700 text-2xl uppercase tracking-wider text-white mb-3 group-hover:text-gold transition-colors duration-300">Audience Development & Community</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              We view our audience as a vital stake-holding community. We focus on building data-driven, highly engaged, and brand-loyal demographics through interactive broadcasting, structured digital infrastructure, and professional community management.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="gsap-stagger-item card-dark p-8 relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold to-gold/20"></div>
+          <div class="mb-4">
+            <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-4 group-hover:border-gold transition-colors duration-300" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+              <!-- Trophy icon -->
+              <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 002.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 012.916.52 6.003 6.003 0 01-5.395 4.972m0 0a6.726 6.726 0 01-2.749 1.35m0 0a6.772 6.772 0 01-3.044 0"/></svg>
+            </div>
+            <h3 class="font-display font-700 text-2xl uppercase tracking-wider text-white mb-3 group-hover:text-gold transition-colors duration-300">Competitive Distinction</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              Our creators compete at peak global tiers within their respective sectors. We leverage this competitive authority to generate high-impact media, drive viewer retention, and establish industry credibility that speaks for itself.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="gsap-stagger-item card-dark p-8 relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold to-gold/20"></div>
+          <div class="mb-4">
+            <div class="w-10 h-10 border border-gold/30 flex items-center justify-center mb-4 group-hover:border-gold transition-colors duration-300" style="clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);">
+              <!-- Handshake icon -->
+              <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/></svg>
+            </div>
+            <h3 class="font-display font-700 text-2xl uppercase tracking-wider text-white mb-3 group-hover:text-gold transition-colors duration-300">Brand Synergy & Partnership</h3>
+            <p class="text-silver text-sm leading-relaxed">
+              We are committed to maintaining a brand-safe, highly professional environment that offers measurable value, organic integration, and maximum ROI for corporate sponsors, endemic brands, and industry partners.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       VISION
+  ══════════════════════════════════════════════════ -->
+  <section class="py-20 px-6" style="background: linear-gradient(135deg, #0d0d0d 0%, #111111 100%);">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="gsap-fade-up">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3">Our Vision</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-6 leading-tight">
+          Where We're<br/><span class="text-gold-gradient">Going</span>
+        </h2>
+        <div class="w-12 h-0.5 bg-gold mb-6"></div>
+        <p class="text-silver leading-relaxed">
+          To establish Rise With Us Gaming as a leading multi-platform media entity within the esports and gaming entertainment sectors. Our long-term objectives include the strategic acquisition of top-tier creative talent, the expansion of commercial merchandise divisions, and the formalization of recurring corporate partnerships that expand our global brand footprint.
+        </p>
+      </div>
+
+      <!-- Vision milestones -->
+      <div class="gsap-fade-up space-y-4">
+        <div class="flex items-start gap-4 p-5 card-dark">
+          <div class="flex-shrink-0 w-8 h-8 bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xs font-700 font-display">01</div>
+          <div>
+            <p class="text-white font-600 text-sm mb-1">Talent Acquisition</p>
+            <p class="text-silver text-xs leading-relaxed">Strategic acquisition of top-tier creative talent across competitive gaming sectors.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5 card-dark">
+          <div class="flex-shrink-0 w-8 h-8 bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xs font-700 font-display">02</div>
+          <div>
+            <p class="text-white font-600 text-sm mb-1">Merchandise Division</p>
+            <p class="text-silver text-xs leading-relaxed">Full expansion of commercial merchandise with a dedicated storefront and branded product lines.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5 card-dark">
+          <div class="flex-shrink-0 w-8 h-8 bg-gold/10 border border-gold/30 flex items-center justify-center text-gold text-xs font-700 font-display">03</div>
+          <div>
+            <p class="text-white font-600 text-sm mb-1">Corporate Partnerships</p>
+            <p class="text-silver text-xs leading-relaxed">Formalization of recurring corporate partnerships that expand our global brand footprint.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       CREED BANNER
+  ══════════════════════════════════════════════════ -->
+  <section class="relative flex flex-col px-6 pb-16 overflow-hidden bg-rwug-darker" style="min-height: 520px;">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+    <!-- Large background text — stays absolutely centered, untouched -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+      <span class="font-display font-700 leading-none uppercase text-gold whitespace-nowrap"
+        style="font-size: clamp(5rem, 18vw, 22rem); opacity: 0.06; letter-spacing: -0.01em; width: 100%; text-align: center; display: block;">
+        RISE WITH US
+      </span>
+    </div>
+
+    <!-- "Our Creed" label — pinned near top of section independently -->
+    <p class="absolute top-20 left-0 right-0 text-center text-gold/60 text-xs tracking-[0.3em] uppercase font-600 z-10">Our Creed</p>
+
+    <!-- Spacer: pushes foreground content to sit over bottom ~35% of bg text -->
+    <div style="height: 300px; flex-shrink: 0;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto w-full text-center gsap-fade-up">
+      <h2 class="font-display font-700 text-5xl md:text-8xl lg:text-9xl uppercase tracking-wider leading-none mb-8">
+        <span class="text-white">One Team,</span>
+        <span class="text-white">One Rise.</span>
+      </h2>
+      <p class="text-silver/80 text-base md:text-lg max-w-2xl mx-auto leading-relaxed italic">
+        "Growth is not achieved in isolation. We build the infrastructure, maximize the collective potential of our talent, and elevate our community, partners, and brand simultaneously."
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       LEADERSHIP
+  ══════════════════════════════════════════════════ -->
+  <section class="py-24 px-6 clip-angled bg-rwug-dark">
+    <div class="max-w-5xl mx-auto">
+
+      <div class="text-center mb-16 gsap-fade-up">
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-600 mb-3">The People Behind the Rise</p>
+        <h2 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-4">Leadership</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- DTB Leadership Card -->
+      <div class="gsap-fade-up max-w-2xl mx-auto">
+        <div class="relative group overflow-hidden" style="background: linear-gradient(145deg, #1a1a1a, #111);">
+
+          <!-- Gold top border accent -->
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
+
+          <div class="flex flex-col sm:flex-row">
+
+            <!-- Photo -->
+            <div class="relative sm:w-64 flex-shrink-0 overflow-hidden">
+              <img
+                src="../images/team/DTB/DTB2.png"
+                alt="DTB — CEO, Rise With Us Gaming"
+                class="w-full h-80 sm:h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              <!-- Gold overlay on hover -->
+              <div class="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+
+            <!-- Info -->
+            <div class="flex-1 p-8 flex flex-col justify-center">
+              <p class="text-gold text-[10px] tracking-[0.3em] uppercase font-600 mb-2">Founder & Chief Executive Officer</p>
+              <h3 class="font-display font-700 text-4xl md:text-5xl uppercase tracking-wider text-white mb-4 leading-none">DTB</h3>
+              <div class="w-10 h-0.5 bg-gold mb-5"></div>
+              <p class="text-silver text-sm leading-relaxed mb-6">
+                The architect behind Rise With Us Gaming, DTB built this organization from the ground up with a singular vision — to create a premier streaming collective that doesn't just compete, but leads. His mandate drives everything we do.
+              </p>
+
+              <!-- Social links -->
+              <div class="flex gap-4">
+                <a href="#" aria-label="DTB on Twitch" class="text-silver hover:text-gold transition-colors duration-200">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+                </a>
+                <a href="#" aria-label="DTB on TikTok" class="text-silver hover:text-gold transition-colors duration-200">
+                  <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom gold accent -->
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/40 to-transparent"></div>
+        </div>
+      </div>
+
+      <!-- CTA below leadership -->
+      <div class="text-center mt-12 gsap-fade-up">
+        <p class="text-silver text-sm mb-6">Want to join the roster or partner with the team?</p>
+        <a href="contact.html" class="btn-primary">Get In Touch</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <footer class="bg-[#080808] border-t border-gold/20 px-16 pt-16 pb-8">
+    <div class="max-w-9xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <img src="../images/logos/nav-logo3.png" alt="Rise With Us Gaming" class="h-16 mb-4" />
+          <p class="text-silver text-sm leading-relaxed max-w-xs">
+            Elite Madden streaming. Competitive gaming. Community first. Rise With Us Gaming — where legends are made.
+          </p>
+          <div class="flex gap-5 mt-6">
+            <a href="#" aria-label="Twitch" class="text-silver hover:text-gold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+            <a href="#" aria-label="YouTube" class="text-silver hover:text-gold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" aria-label="Twitter" class="text-silver hover:text-gold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" aria-label="Instagram" class="text-silver hover:text-gold transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-display font-700 text-sm tracking-widest uppercase text-gold mb-4">Navigate</h4>
+          <ul class="space-y-2">
+            <li><a href="../index.html" class="text-silver text-sm hover:text-gold transition-colors">Home</a></li>
+            <li><a href="team.html" class="text-silver text-sm hover:text-gold transition-colors">Team</a></li>
+            <li><a href="about.html" class="text-silver text-sm hover:text-gold transition-colors">About</a></li>
+            <li><span class="text-silver/40 text-sm">Store (Coming Soon)</span></li>
+            <li><a href="contact.html" class="text-silver text-sm hover:text-gold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display font-700 text-sm tracking-widest uppercase text-gold mb-4">Roster</h4>
+          <ul class="space-y-2">
+            <li><a href="players/player-1.html" class="text-silver text-sm hover:text-gold transition-colors">GamerTag 1</a></li>
+            <li><a href="players/player-2.html" class="text-silver text-sm hover:text-gold transition-colors">GamerTag 2</a></li>
+            <li><a href="players/player-3.html" class="text-silver text-sm hover:text-gold transition-colors">GamerTag 3</a></li>
+            <li><a href="players/player-4.html" class="text-silver text-sm hover:text-gold transition-colors">GamerTag 4</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gold/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-silver/40 text-xs tracking-wider">&copy; 2026 Rise With Us Gaming. All rights reserved.</p>
+        <p class="text-silver/30 text-xs">Built by <a href="https://noblefirstudio.com" class="hover:text-gold transition-colors">Noble Fir Studio</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- GSAP scroll animations -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.gsap-fade-up').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, y: 40 }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+    gsap.utils.toArray('.gsap-stagger-group').forEach(group => {
+      gsap.fromTo(group.querySelectorAll('.gsap-stagger-item'),
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.12,
+          scrollTrigger: { trigger: group, start: 'top 85%' } }
+      );
+    });
+  </script>
+</body>
+</html>
